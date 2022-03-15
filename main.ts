@@ -1,3 +1,6 @@
+input.onPinPressed(TouchPin.P0, function () {
+    hp += 10
+})
 input.onButtonPressed(Button.A, function () {
     radio.sendValue("aanval", 30)
 })
