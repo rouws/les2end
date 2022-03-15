@@ -1,12 +1,12 @@
 input.onPinPressed(TouchPin.P1, function () {
     hp += 10
     basic.showIcon(IconNames.SmallHeart)
-    basic.pause(100)
 })
 radio.onReceivedValue(function (name, value) {
     if (hp > 0) {
         hp = hp - value
     }
+    basic.showNumber(hp)
 })
 input.onGesture(Gesture.ThreeG, function () {
     radio.sendValue("aanval", 30)
