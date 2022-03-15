@@ -8,7 +8,7 @@ radio.onReceivedValue(function (name, value) {
         hp = hp - value
     }
 })
-input.onGesture(Gesture.LogoDown, function () {
+input.onGesture(Gesture.ThreeG, function () {
     radio.sendValue("aanval", 30)
 })
 let hp = 0
