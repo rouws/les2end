@@ -1,9 +1,5 @@
-input.onButtonPressed(Button.A, function () {
-    radio.sendValue("aanval", 30)
-})
 input.onPinPressed(TouchPin.P1, function () {
     hp += 10
-    pins.digitalWritePin(DigitalPin.P1, 1)
     basic.showIcon(IconNames.SmallHeart)
     basic.pause(100)
 })
@@ -11,6 +7,9 @@ radio.onReceivedValue(function (name, value) {
     if (hp > 0) {
         hp = hp - value
     }
+})
+input.onGesture(Gesture.LogoDown, function () {
+    radio.sendValue("aanval", 30)
 })
 let hp = 0
 hp = 90
