@@ -1,6 +1,8 @@
 input.onPinPressed(TouchPin.P1, function () {
-    hp += 10
     basic.showIcon(IconNames.SmallHeart)
+    if (hp < 90) {
+        hp += 10
+    }
 })
 radio.onReceivedValue(function (name, value) {
     if (hp > 0) {
@@ -14,7 +16,6 @@ input.onGesture(Gesture.ThreeG, function () {
 let hp = 0
 hp = 90
 radio.setGroup(33)
-radio.setTransmitPower(1)
 basic.showIcon(IconNames.Heart)
 basic.forever(function () {
     if (hp > 70) {
