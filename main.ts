@@ -1,12 +1,17 @@
 input.onPinPressed(TouchPin.P1, function () {
-    hp += 10
     basic.showIcon(IconNames.SmallHeart)
+    music.startMelody(music.builtInMelody(Melodies.BaDing), MelodyOptions.Once)
+    if (hp < 90) {
+        hp += 10
+    }
 })
 input.onGesture(Gesture.Shake, function () {
     radio.sendValue("aanval", 30)
 })
 radio.onReceivedValue(function (name, value) {
-    hp = hp - value
+    if (hp > 0) {
+        hp = hp - value
+    }
 })
 let hp = 0
 radio.setGroup(33)
