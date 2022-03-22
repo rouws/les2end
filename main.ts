@@ -6,12 +6,11 @@ input.onGesture(Gesture.Shake, function () {
     radio.sendValue("aanval", 30)
 })
 radio.onReceivedValue(function (name, value) {
-    if (hp > 0) {
-        hp = hp - value
-    }
+    hp = hp - value
 })
 let hp = 0
 radio.setGroup(33)
+radio.setTransmitPower(1)
 hp = 90
 basic.showIcon(IconNames.Heart)
 basic.forever(function () {
