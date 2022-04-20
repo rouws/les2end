@@ -6,18 +6,31 @@ input.onPinPressed(TouchPin.P1, function () {
     }
 })
 input.onGesture(Gesture.Shake, function () {
-    radio.sendValue("aanval", 30)
+    if (aanDeBeurt) {
+        radio.sendValue("aanval", 40)
+        aanDeBeurt = false
+    }
 })
 radio.onReceivedValue(function (name, value) {
     if (hp > 0) {
         hp = hp - value
+        music.playTone(440, music.beat(BeatFraction.Whole))
+        music.playTone(330, music.beat(BeatFraction.Double))
+    }
+    if (hp > 0) {
+        aanDeBeurt = true
+    } else {
+        music.startMelody(music.builtInMelody(Melodies.Wawawawaa), MelodyOptions.Once)
     }
 })
+let aanDeBeurt = false
 let hp = 0
-radio.setGroup(33)
+radio.setGroup(7)
 radio.setTransmitPower(1)
 hp = 90
+aanDeBeurt = true
 basic.showIcon(IconNames.Heart)
+music.startMelody(music.builtInMelody(Melodies.JumpUp), MelodyOptions.Once)
 basic.forever(function () {
     if (hp > 70) {
         basic.showIcon(IconNames.Happy)
